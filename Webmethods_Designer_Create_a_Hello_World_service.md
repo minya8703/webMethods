@@ -310,7 +310,100 @@ SEQUENCE 단계를 사용하여 그룹으로 처리할 일련의 단계를 빌�
 SEQUENCE 단계에 SEQUENCE에서 종료하도록 구성된 EXIT 단계가 포함된 경우 EXIT단계를 실행하면 SEQUENC 단계가 성공, 완료 또는 실패 시 종료하도록 구성되었는지 여부에 관계없이 항상 SEQUENCE Step에서 종료 되며, 이는 SEQUENCE 내 EXIT 단계의 위치와 EXIT단계가 성공 또는 실패를 알리도록 구성되었는지 여부에 관계없이 발생
 
 ### The LOOP Step
+LOOP 단계는 지정한 배열의 각 요소에 대해 하위 Step Sequence를 한번씩 반복합니다.  예로 파이프라인에 구매 주문 라인 항목의 배열이 포함된 경우 LOOP 단계를 사용하여 배열의 각 라인 항목을 처리할 수 있습니다.  LOOp본문을 구성하는 일련의 단계(즉, LOOP가 반복할 단계 세트 )를 지정하려면 다음 예제와 같이 LOOP 아래에 해당 단계를 하위단계로 들여 사용
+
+* 입력 배열의 지정
+ Loop Step에서는 Loop의 하나 이상의 Step에대한 입력으로 사용될 개별 요소가 포함된 입력 배열을 지정해야 하며 런타임에  Loop 단계는 지정된 배열의 각 멤버에 대해 루프의 한 처리를 실행. 예를 들어 구매 주문서에 저장된 각 라인 항목에 대해 Loop 를 실행하려는 경우 주문 라인 항목이 Loop의 입력 배열로 저장된 문서 목록을 사용.
+ * LOOP Step의 속성 보기에서 입력 배열의 이름을 지정합니다. 지정하는 배열은 다음 데이터 유형 중 하나입니다,
+   * String list
+   * String table
+   * Document list
+   * Object list
+
+#### LOOP properties
+Flow를 설계할 때 루프 내의 서비스는 지정된 입력 배열의 개별 요소에 대해 작동하기 때문에 전체 배열이 아닌 배열의 요소를 입력으로 사용하도록 설계되어야 한다.
+예) Loop가 Item, Qty 및 UnitPrice라는 하위 항목을 포함하는 LineItems라는 문서 목록에 대해 실행되는 경우 LineItems를 LOOP단계의 입력 배열로 지정 하지만 루프 내의 서비스는 LineItems(예를 들어 Item, Qty, UnitPrice)을 입력으로 사용
+※ LOOP단계는 입력 배열이 다른 변수의 하위(예 : 문서의 하위인 문자열 목록)인 경우 스레드로 부터 안전하지 않습니다. LOOP Step은 단계 실행 중에 입력 및 출력 배열의 차원을 변경하기 때문에 상위 변수에 액세스하는 서비스를 호출하는 모든 스레드는 입력 배열 변수를 배열 또는 스칼라로 경험할 수 잇습니다. 이로 인해 상위 변수에 액세스하는 스레드에 대해 예측할 수 없는 동작이 발생합니다.
+
+입력 배열이 파이프라인의 최상위 변수인 경우 Loop단계를 포함아는 서비스에 대한 파이프라인 개체(IData)에 액세스하는 스레드도 예측할 수 없는 동작을 경험할 수 있습니다. 따라서 입력 배열의 포함하는 문서, 문서 목록 또는 파이프라인과 같이 객체에 동시에 액세스 할 수 있는 다른 서비스를 코딩하지 마십시오.LOOP Step의 입력 차원 변경 사항에 대한 자세한 내용은 
+[LOOP 단계의 파이프라인 정보를](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.flow.loop.aboutPipelineForLoop.html#wwID0EWBAQB "LOOP 단계의 파이프라인 정보")  참조
+
+* LOOP Step에서 출력 수집
+  * Loop Step에서 출력 변수를 생성하는 경우 서버는 해당 출력을 파이프라인의 배열로 수집할 수 있습니다.
+  * 이렿게 하려면 출력 배열 매개 변수를 사용하여 서버가 루프의 각 반복에 대한 출력을 수집할 배열 변수의 이름을 지정
+  * 예) Loop가 구매 주문서에 있는 각 라인 항목의 재고 상태를 확인하고 실행될 때마다 InventoryStatus 라는 문자열을 생성 하는 경우 InventoryStatus를 출력 배열 의 값으로 지정 합니다. 런타임에 서버는 InventoryStatus를 각 루프 반복의 출력을 포함하는 배열 변수로 자동 변환합니다.
+  ※ Loop Step을 종료하도록 구성된 EXIT Step 또는 Loop Step의 반복은 출력 배열의 내용에 영향을 미칩니다. [반복, 단계 또는 서비스 종료를](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.flow.exit.exitFrom.html#wwID0EVFBQB "반복, 단계 또는 서비스 종료") 참조
+* LOOP 단계의 파이프라인 정보
+  * LOOP Step의 분문에서 입력 배열로 사용되는 필드가 차원적으로 축소됩니다. 예로 입력 배열이 문자열 목록인 경우 입력은 LOOP본문 내에서 문자열로 표시됩니다. 입력 배열이 문자열 테이블인 경우 입력은 LOOP본문 내의 문자열 목록입니다. 이는 LOOP 단계가 입력 배열의 각 요소에서 작동하기 때문입니다.
+  *  출력 배열로 사용되는 필드도 LOOP단계의 본문 내에서 차원이 줄어듭니다. Loop Step이 배열을 생성하는 동안 LOOP Step의 각 반복은 배열에 하나의 요소를 생성합니다. 출력 배열이 문자열 목록인 경우 LOOP 본문 내에서 문자열입니다. 출력 배열이 문자열 테이블인 경우 LOOP 본문 내에서 출력은 문자열 목록입니다.
+다음 예에서 Loop Step은 myInputLIst 라는 입력 배열의 각 항목에 대해  pub.math:addInts 서비스를 실행합니다. LOOP 단계는 출력을 myOutputList라는 배열로 수집합니다. 즉, pub. math:addInts 서비스는 문자열을 입력으로 사용하고 문자열을 출력하고 생성합니다. 결과적으로 pub.math:addInts 서비스 파이프라인에서 입력은 myInputList 라는 문자열 이고 출력은 myOutputList라는 문자열입니다. LOOP Step이 완료된 후 파이프라인을 보면 myInputLIst 및 myOutputLIst 가 문자열 목록으로 나타납니다.
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/loop_dimensions.png)
+* LOOP Step 만들기
+  1. LOOP Step을 기존 Flow Service에 추가하하는 경우 편집기에 해당 서비스를 표시하고 Loop Step을 추가할 바로 위의 단계를 선택
+  2. 아래의 하나를 수행
+    2-1. Flow Service 편집기 도구 모음에서 ?? 옆에 있는 버튼을 클릭
+    2-2. Flow Service 편집기 옆을 클릭하여 팔레트 보기를 엽니다. 클릭 ?? 하여 Flow Service 편집기로 드래그
+  3. Properties 설명을 참고하여 필드를 완성
+  4. 다음 Step을 사용하여 루프 본문을 작성
+    4-1. Flow Service 편집기 도구 모음의 버튼을 사용하여 Flow Step을 추가
+    4-2. Flow Service 편집기 두구 모음에서 ?? 을 사용하여 Flow Step의 하위 단계로 만듭니다.
+    4-3. 필요에 따라 하위 단계의 속성을 설정
+  5.  파이프라인 보기를 사용하여 입력 배열의 요소를 LOOP단계의 각 하위에 필요한 입력 변수에 연결하십시오. 파이프라인 보기 사용자에 대한 자세한 내용은 [Flow Services의 데이터 매핑을](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.map.html#wwID0EGSFQB "Flow Services의 데이터 매핑") 참조
+#####  Properties 설명
+ |For this property…|Specify…|
+|------|---|
+|Comments|해당 Step의 설명|
+|Scope|해당 Step을 제한하려는 파이프라인의 문서(IData 객체)이름입니다.|
+|Timeout|다른 Step의 Timeoutr과 동일|
+|Label|해당 Step의 설명|
+|Input array| LOOP가 작동할 배열 변수의 이름. 이 변수는 문자열 목록, 문자열 테이블, 문서 목록 또는 객체 목록 유형 중 하나여야 합니다.|
+|Output array| LOOP가 실행될 때마다 서버에서 수집할 요소의 이름, LOOP가 출력 값을 생성하지 않거나 입력 배열의 요소를 수집하는 경우 이 속성을 지정할 필요가 없습니다.|
+
+ ```
+ ※LOOP Step을 빌드할 때 LOOP 본문의 MAP 또는 INVOKE 단계 내에서 출력 배열 변수에 대한 링크를 생성하기 전에 LOOP 출력 배열 속성에 출력 배열 변수를 지정했는지 확인하십시오. 링크를 만든 후 출력 배열 변수를 지정하면 런타임 시 링크가 실패합니다. Designer에서 단계를 디버그하여 링크가  성공하였는지 확인할 수 있습니다. 링크가 실패하면 출력 배열 변수에 대한 링크를 삭제한 다음 다시 생성하십시오.
+```
+
 ### The EXIT Step
+* EXIT Flow  Step은 전체 Flow Service, 특정 상위 흐름 단계 또는 LOOP 또는 REPEAT 단계 내의 반복을 종료하고 종료의 일부로 성공 또는 실패 신호를 보냅니다. 전체 Flow Service를 종료할 때 EXIT 단계는 실행 제어를  Flow Service 또는 Java 서비스일 수 있는 상위 서비스로 이전합니다. 종료로 인해 Flow Service의 최상위 수준이 종료되면 Flow Service 실행이 성공적으로 종료 되거나 예외와 함께 종료됩니다. Flow Service 내에서 Step을 종료할 때 EXIT Step은 실행 제어를 다른 Flow Step으로 이전합니다.
+
+* 서비스 실행이 계속되는지 여부와 제어가 이전되는 위치는 EXIT 단계가 성공 또는 실패 신호를 보내는 지 여부와 EXIT Step이 종료되는 단계에 따라 다릅니다.
+* EXIT Step을 사용하는 경우
+  * 몇 단계로 중첩된 단계 내에서 천체 흐름 서비스를 종료
+  * ServiceException을 발생시키는 Java 서비스를 작성하지 않은 Flow 또는 Flow Step을 종료할 때 예외 발생
+  * Flow Step을 갑자기 완료
+  * 예외를 발생시키지 않고 LOOP 뜨는 REPEAT 흐름 단계를 종료
+  * 전체 LOOP 또는 REPEAT 단계를 종료하지 않고 LOOP 또는 REPEAT 흐름 단계의 반복을 종료
+
+* 다음 Flow Service에는 실행될 경우 가장 가까운 상위 LOOP 단계를 종료하는 두 개의 EXIT Step이 포함되어 있습니다. CreditCardType의 값이 null이거나 빈 문자열인 경우 일치하는 EXIT Step이 실행되고 '/POs/PurchaseOrdersList' 단계에서 LOOP를 종료합니다.
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/FlSvc_EXITstep.png)
+
+* 성공 또는 실패 시 종료 - EXIT Step에서 종료가 성공 조건 또는 실패 조건을 반환해야하는 지 여부를 나타냅니다.
+  * 성공은 포함하는 Flow Service 또는 Flow Step이 성공적으로 실행됨을 나타냅니다. 단계가 종료되는 반복, 흐름 단계 또는 Flow Service를 나타내는 종료 속성 값에 따라 서비스 실행이 계속됩니다.
+    Flow Step 또는 Service의 갑자기 발생시킬 완료를 수행하기 위해 종료하고 성공 신호를 보낼 수 있습니다. 갑자기 발생한 완료는 정상적인 완료 전에 Flow Step에서 전환되는 것으로, 단계 또는 포함 단계의 끝까지 실행됩니다. 갑자기 발생한 완료는 시패가 아니며, 실행은 흐름 서비스의 다음 반복, 흐름 단계 또는 서비스에서 계속됩니다. Exit from 속성은 서비스가 종료되는 위치와 결과적으로 서비스 실행이 계속되는 방식을 결정합니다.
+ $iteration, $lopp, $flow 또는 $parent를 종료하고 성공 신호를 보내도록 구성된 EXIT 단계를 사용하여 갑자기 발생하는 완료를 수행 할 수 있습니다.
+* 실패는 EXIT Stepo가 종료되는 Flow Service 또는 Flow Step이 실패로 종료 됨을 나타 냅니다. 신호 실패 잡히거나 Flow 가 완료될 때까지 보류 중인 예외를 생성합니다. 실패와 함께 Step이 종료되면 실패가 상위 Step으로 이동하여 오류가 흐름의 최상의 수준으로 이동하며 발견되지 않으면 통합 서버에서 FlowExceprion이 발생합니다. 통합 서버가 발생시키는 예외와 리턴되는 오류 메시지의 텍스트를 지정할 수 있습니다.
+ ``` 
+ ※TRY, CATCH, FINALLY 사용 패턴의 일부로 CATCH Step을 사용하여 EXIT 단계에서 발생한 예외를 포함하여 예외를 발견하고 응답하도록 서비스를 구성할 수 있습니다.
+```
+
+* 정상완료, 갑작스러운 완료 및 실패에 대한 정보와 이것이 TRY, CATCH 및 FINALLY Step에 미치는 영향에 대한 자세한 내용은  [CATCH 및 FINALLY 단계의 정상 및 갑작스러운 완료 및 실패를](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.tcf.completion.html#wwID0EJLVQB "TRY, CATCH 및 FINALLY 단계의 정상 및 갑자기 발생하는 완료 및 실패")를 참조
+
+* 반복, 단계 또는 서비스 종료
+
+  * EXIT Step을 빌드할 때 LOOP또는 REPEAT Step의 반복,  상위 Flow Step, 특정 Flow Step 또는 전체 Flow Service와 같이 EXIT Step을 종료하려는 항복 에서 지정합니다. Flow Service 내에서 Step을 종료하면 EXIT Step이 종료된  다음 Step에서 실행이 계속 됩니다.
+  * EXIT Step 실행으로 인해 통합 서버가 Flow Service의 끝에 도달하면 ( 즉, 동일한 Flow Service에 다음 단계가 없음) Flow Service가 종료 됩니다. EXIT Step의 결과에 따라 Flow 서비스가 성공 또는 실패로 완료하였는지 여부가 결정됩니다.  서비스가 실패로 끝나면 통합 서버는 보류 중인 예외를 처리합니다. EXIT Step이 실패로 완료로 처리 메시지를 보냈지만 특정 예외를 지정하지 않은 경우 통합 서버는 FlowException을 처리합니다.
+
+
+ |Exit from value | Description|
+|------|---|
+|$parent| Flow Step에 관계없이 상위 Flow Step에서 즉시 종료|
+|$loop| 가장 가까운 상위 LOOP 또는 REPEAT Flow Step에서 종료 <br>
+EXIT Step이 TRY, CATCH 또는 FINALLY Step의 인접한 하위 Step인 경우 TRY, CATCH 또는 FINALLY Step 내에서 실패한 $loop를 종료하는 것은 허용되지 않습니다. 이것은 흐름 정의 오류로 간주됩니다. 이로 인해 FlowException이 발생하고 Flow Service가 바로 종료된다. <br>
+그러나 TRY, CATCH 또는 FINALLY 내부의 더 깊이 중첩된 단계 내에서 오류가  있는 $loop를 종료하는 것은 가능합니다. 컨트롤이 TRY, CATCH 또는 FINALLY Step으로 돌아 갑니다. <br>
+LOOP Step을 종료할 때 통합 서버는 출력 변수의 현재 값을 출력 배열로 복사하지 않습니다. 이는 LOOP Step에 출력 배열 변수의 값을 매핑하거나 설정하는 MAP 단계 또는 INVOKE Step이 포함된 경우에도 마찬가지 입니다. Loop에서 나가면 LOOP 단계의 본문이 정상적으로 완료되지 않으므로 결과적으로 출력 배열 변수의 값이 파이프라인에 복사되지 않는다. |
+|$flow|해당 Step의 설명|
+|$iteration|해당 Step의 설명|
+|label|해당 Step의 설명|
 ### The MAP Step
 ### The TRY, CATCH, and FINALLY Steps
 
