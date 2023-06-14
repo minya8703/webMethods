@@ -473,6 +473,25 @@ TRY, CATCH 및 FINALLY Step은 Flow Service의 서비스의 실패를 처리하�
 * CATCH Step 이전 TRY Stepd이 실패할 경우 실행하려는 일련의 단계가 포함되어 있습니다. 종종 CATCH Step에는 복구 놀리가 포함됩니다.
 * FINALL Step에는 TRY Step의 성공 여부에 관계 없이 통합 서버가 실행하는 논리가 포함됩니다. 종종 FINALY Step단계의 결과에 관계없이 실행해야 하는 정리 논리가 포함되어 있습니다.
 
+## Layout Tab 에서 작업
 
+### Layout Tab이란
+ * Layout Tab은 Tree Tap과 같이 디자이너가 Flow Service 편집기에 표시하하는 Flow Service의 보기이며 두 Tab중 하나를 사용하여 흐름 서비스를 구축하거나 편집할 수 있습니다. 그러나 Layout Tab은 Flow Service를 생성할 수 있는 더 많은 그래픽 보기를 제공합니다.
+ * Layout Tab에서 Flow Service는 순서도와 유사하게 표시하며, 디자이너는 Flow Step과 Flow Service의 시작 및 종료에 대한 구체화된 모양을 표시합니다. 선은 Flow Step을 연결하고 Flow Step이 실행되는 순서를 보여줍니다.
+ * 언제 Layout Tab을 사용하나?
+   * 두 Tab 중 사용하기 쉬운 페이지에서 작업하며, Flow Service를 구축할 때 Tab 간에 쉽게 전환할 수 있다. 예로 Layout Tab에서 Flow Step을 추가하고 Flow Service의 기본 구조를 정희하는 것이 더 쉬울 수 있지만 Tree Tab을 사용하여 데이터 매핑을 할 수 있다.
+   * 아래의 경우 Layout Tab이 편리하다
+     * Flow Service를 순서대로 작성하는 것보다 플로우 차트로 작성하는 것이 더 쉽다거나 Flow Service를 일련의 라인별 단계가 아닌 다이어그램으로 보면 Flow Service가 수행하는 프로세스를 더 쉽게 상상할 수 있습니다.
+     * 프로그래밍에 익숙하지 않거나 webMethods Intergration Server 에 익숙하지 않은 사람과 비지니스 프로세스를 설계할경우 순서도가 편할 수 있다.
+     * Flow Service가 관리에 작동하는 방식에 대한 다이어그램을 표시해야 합니다.(Flow Service는 인쇄 불가)
+   * 
+### Layout Tab에서 Flow Service는 어떻게 표시되나
+ Layout Tab은 Flow Service의 시작과 끝,  상위 단계, 하위 단계, Flow Step이 실행되는 순서와 같은 프름 서비스 요소에 대한 구체화된 모양과 구조를 사용. 디자이너는 Flow Step을 왼쪽에서 오른쪽으로 순차적으로표시하고 해당 순서 대로 단계를 실행
+ Designer는 Flow Service를 생성할 때 시작 및 종료 기호를 자동으로 추가하며, Flow Service에 Step을 추가하면 Designer는 Flow Step을 서비스의 나머지 단계에 연결하는 선을 자동으로 이어 줍니다.
+ 
+### Flow Service 편집기에서 눈금선 표시 또는 숨기기
+View > Grid 를 선택
+### Layout Tab에서 Flow Service 구축
+Layout Tab에서 Flow Service를 구축하는 것은 Tree Tab에서 Flow Service를 구축하는 것과 동일한 단계인 Flow Service 생성, Flow Step 추가, 속성설정, 서비스 입력 및 출력 매개변수 선언, 파이프라인 데이터 매핑, 실행 설정으로 구성. -시간매개변수 Flow Step을 추가하고 이동하는 방법을 제외하고 각 단계를 완료하는 절차는 Tree Tab에서 Layout Tab에서 동일
 
 https://techdocs.broadcom.com/kr/ko/ca-enterprise-software/it-operations-management/application-performance-management/10-5/345392263/345392665/345392690.html
