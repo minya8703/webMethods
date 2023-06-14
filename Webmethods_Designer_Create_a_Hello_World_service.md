@@ -401,9 +401,62 @@ Flow를 설계할 때 루프 내의 서비스는 지정된 입력 배열의 개�
 EXIT Step이 TRY, CATCH 또는 FINALLY Step의 인접한 하위 Step인 경우 TRY, CATCH 또는 FINALLY Step 내에서 실패한 $loop를 종료하는 것은 허용되지 않습니다. 이것은 흐름 정의 오류로 간주됩니다. 이로 인해 FlowException이 발생하고 Flow Service가 바로 종료된다. <br>
 그러나 TRY, CATCH 또는 FINALLY 내부의 더 깊이 중첩된 단계 내에서 오류가  있는 $loop를 종료하는 것은 가능합니다. 컨트롤이 TRY, CATCH 또는 FINALLY Step으로 돌아 갑니다. <br>
 LOOP Step을 종료할 때 통합 서버는 출력 변수의 현재 값을 출력 배열로 복사하지 않습니다. 이는 LOOP Step에 출력 배열 변수의 값을 매핑하거나 설정하는 MAP 단계 또는 INVOKE Step이 포함된 경우에도 마찬가지 입니다. Loop에서 나가면 LOOP 단계의 본문이 정상적으로 완료되지 않으므로 결과적으로 출력 배열 변수의 값이 파이프라인에 복사되지 않는다. |
-|$flow|해당 Step의 설명|
-|$iteration|해당 Step의 설명|
-|label|해당 Step의 설명|
+|$flow| 통합 서버는 Flow Service의 맨 위에 도달할 때까지 EXIT Step의 상위 흐름 Step에서 종료됩니다. $flow 값에서 종료는 통합 서버가 전체흐름 서비스를 종료함을 나타냅니다.  $flow whith failure는 바로 종료 되며 통합 서버는 개입하는 CATCH 또는 FINALLY 단계를 실행 하지 않습니다.  Exit from $flow whith successful은 EXIT와 Flow의 상단 사이에 개입하는 FINALLY 단계를 실행합니다.|
+|$iteration| 가장 가까운 상위 LOOP또는 REPEAT 단계의 현재 반복에서 종료합니다. 통합 서버는 EXIT 단계에 가장 가까운 상위 LOOP 또는 REPEAT Step의 현재 반복을 종료합니다. 그런 다음 통합 서버는 LOOP 또는 REPEAT Step의 다음 반복을 실행<br> ※ 반복을 종료할 때 EXIT는 성공 신호를 보내야 합니다. 반복 종료 및 신호 실패는 허용되지 않으며 실행시 FlowException이 발생하고 FlowException이 발생하고 Flow Service가 즉시 종료됩니다. EXIT Step은 $loop를 종료할 때 실패 신호를 보낼 수 있습니다.<br>※ 반복을 종료할 때 통합 서버는 EXIT Step 실행 전에 발생한 조치를 롤백하지 않습니다. 예를 들어 EXIT Step이 실행되기 전에 반복의 출력이 출력 배열 변수에 설정된 경우 반복 출력은 여전히 출력 배연 변수에 나타납니다. <br>Loop Step 내에서 포함하는 TRY, CATCH 또는 FINALLY Step에서 실행되는 exit $iteration은 해당 단계와 Loop Step 까지의 중간 단계를 갑자기 완료합니다. 발견되지 않은 실패로 FINALLY Step이 갑자기 완료되면서 실패가 삭제 됩니다. <br> REPEAT Step 포함된 TRY, CATCH 또는 FINALLY Step에서 실행된 exit $iteration은 해당 단계와 REPEAT Step까지의 중간 단계를 갑자기 완료합니다. 발견되지 않은 실패로 FINALLY가 갑자기 완료되면 실패가 삭제됩니다. 이로 인해 반복 실패가 성공이 되고 REPEAT Step 실행이 완료될 수 있습니다.|
+|label| 통합 서버는 지정된 레이블이 있는 흐림 단계에 도달할 때까지 상위 Flow Step을 종료합니다. 지정된 레이블은 EXIT Step에 대한 상위 Flow Step이어야 합니다. 그렇지 않은 경우 Flow Service는 FlowException으로 종료됩니다. <br> EXIT Step이 TRY, CATCH 또는 FINALLY Step의 직속 자식인 경우 TRY, CATCH또는 FINALLY 단계 내에서 실패한 레이블에서 종료하는 것은 허용 되지 않습니다. 이는 흐름 정의 오류로 간주되며 FlowException이 발생하고 Flow Service가 즉시 종료 <br> 그러나 TRY, CATCH 또는 FINALLY 내부의 더 깊이 중첩된 단계 내에서 오류가 있는 레이블에서 종료하는 것은 가능합니다. 컨트롤이 에리블이 지정된 단계로 가게 됩니다.|
+
+* EXIT Step 만들기
+  * Flow Service에서 EXIT Step을 빌드할 때 컨테이너 역활을 하는 Flow Step만 하위에서 종료 단계를 가질 수 있습니다. 여기에는 SEQUENCE, BRANCH, REPEAT, LOOP, TRY, CATCH 및 FINALLY가 포함됩니다. Flow Service의 최상위 Step은 암시적 SEQUENCE의 구성원 입니다.
+  *  자세한 내용은 지침을 포함하여  TRY, CATCH 및 FINAL과 함께 종료 단계를 사용하는 방법[Limitations for the TRY, CATCH, and FINALLY Steps](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/to-try_catch_finally_2.html#wwID0EUIWQB "Limitations for the TRY, CATCH, and FINALLY Steps")을 참조
+  *  다음중 하나를 수행
+    * Flow Service 편집기 도구 모음에서  ?? 옆에 있는 버튼을 클릭하고 ?? 을 클릭합니다
+    * Flow Service 편집기 옆을 클릭하여 파레트 보기를 열어 ??을 클릭하여 Flow Service 편집기로 드래그 합니다.
+  #####  Properties 설명
+ |For this property…|Specify…|
+|------|---|
+|Comments|해당 Step의 설명|
+|Label| 이 특정 Step에 대한 선택적 이름 또는 null, 일치하지 않거나 빈 문자열 ($null, $default, 공백)<br> ※이 Step을 BRANCH Step의 대상으로 사용하는 경우 레이블 특성에 값을 지정 해야 합니다. BRANCH Step에 대한 자세한 내용은 BRANCH Step을 참조|
+|Exit from| 종료하려는 Flow Step입니다. 아래의 하나를 지정 <br>$parent - Step 유형에 관계없이 상위 Flow입니다. 이것이 기본값<br>$loop- 가장 가까운 상위 Loop 또는 REPEAT Flow<br>$flow- 전체 Flow <br>$iteration- 가장 가까운 상위 Loop 또는 REPEAT Flow Step의 반복입니다.<br>label - 이 값과 일치하는 레이블이 있는 가장 가까운 상위 Flow Step입니다. ※ 지정한 레이블이 상위 Flow Step의 레이블과 일치하지 않으면 서비스가 FlowExceprion과 함께 종료<br><blank> - 가장 가까운 상위 Loop 또는 REPEAT Flow Step 이는 $loop값을 지정하는 것과 같습니다.|
+|Signal|종료를 성공 실패로 간주할지 여부. 다음 중 하나를 지정<br> SUCCESS - 성공 조건으로 Flow Service 또는 Flow Step을 종료<br> FAILURE - 실패 조건으로 Flow Service 또는 Flow Step을 종료. 종료 후 예외가 발생. 실패 메시지 속성으로 오류 메시지를 지정 예를 들어:
+
+java.lang.예외
+
+com.wm.app.b2b.server.ServiceException
+
+com.wm.lang.flow.FlowException
+
+com.costomerCo.CustomException
+
+유효한 클래스 이름은 현재 클래스 로더에서 사용할 수 있어야 하며 java.lang.Exception을 확장해야 합니다.
+
+클래스 이름이 유효하지 않은 경우 통합 서버는 실패 메시지 값 에 다음 메시지가 추가된 기본 예외를 처리합니다 .
+
+-- 지정된 실패에 대한 클래스를 찾을 수 없거나 유효하지 않음
+
+실패 이름 속성 의 기본값은 종료 위치 값 에 따라 다릅니다 .
+
+* Exit from이 $flow 로 설정된 경우 기본값은 com.wm.lang.flow.FlowException입니다.
+* 다른 모든 Exit from 값의 경우 기본값은 com.wm.lang.FlowFailure입니다.
+
+이 속성에 대해 파이프라인 변수 값을 사용하려면 % 기호 사이에 변수 이름을 입력합니다(예: %failure% ). 지정하는 변수는 문자열이어야 합니다.
+
+EXIT 단계에서 예외를 발생시키려면 실패 이름 또는 실패 인스턴스 특성에 대한 값을 지정하십시오. 둘 다 지정하는 경우 통합 서버는 실패 인스턴스 값을 사용합니다 .
+
+이 속성은 Signal이 FAILURE 로 설정된 경우에만 사용됩니다 .|
+|Failure name| 이 실패에 대해 생성될 보류중인 예외의 정규화된 Java 클래스 이름 |
+|Failure instance|EXIT 단계에서 실패로 식별하려는 기존 예외 인스턴스가 포함된 파이프라인 변수의 이름입니다. 이 인스턴스는 pub.flow:getLastFailureCaught 서비스의 실패 출력 매개변수 일 가능성이 큽니다 .
+
+지정된 파이프라인 변수는 객체 유형이어야 합니다.
+
+파이프라인의 개체 변수는 java.lang.Exception을 확장해야 합니다. 그렇지 않은 경우 통합 서버에서 FlowException이 발생합니다.
+
+존재하지만 런타임 시 예외를 포함하지 않는 파이프라인 변수를 지정하거나 존재하지 않는 변수를 지정하는 경우 통합 서버는 FlowException을 발생시키고 흐름 서비스를 종료합니다.
+
+이 속성은 Signal이 FAILURE 로 설정된 경우에만 사용됩니다 .|
+|Failure message|표시하려는 예외 메시지의 텍스트입니다. 이 속성에 대해 파이프라인 변수 값을 사용하려면 % 기호 사이에 변수 이름을 입력합니다(예: %mymessage% ). 지정하는 변수는 문자열이어야 합니다.
+
+이 속성은 Signal이 FAILURE 로 설정된 경우에만 사용됩니다 .|
+
 ### The MAP Step
 ### The TRY, CATCH, and FINALLY Steps
 
