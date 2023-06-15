@@ -505,6 +505,58 @@ Layout Tab에서 Flow Service를 구축하는 것은 Tree Tab에서 Flow Service
 파이프라인 보기는 호출된 서비스(INVOKE 단계) 또는 Flow Service의 MAP Step에 대한 파이프라인을 표시 파이프라인 보기의 내용은 INVOKE Step과 MAP Step이 다릅니다.
 
 ### INVOKE 단계에 대한 파이프라인 보기
+ Invoke Step의 경우 파이프라인 보기는 편집기에서 선택한 서비스와 관련된 파이프라인 두 단계를 나타냅니다.
+ ![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/Mapping_PipelineViewINVOKEstep.png)
+|This stage...|Represents...|
+|------|---|
+|1 | 선택한 서비스가 실행되기 직전에 예상되는 파이프라인 상태입니다. <br> Pipeline In은 서비스가 실행되기 전에 파이프라인에 있을 것으로 예상되는 변수 집합을 나타냅니다(이전 서비스의 선언된 입력 및 출력 매개 변수 기반) Service In은 선택한 서비스가 입력으로 예상하는 변수 세트를 나타냅니다(입력 매개변수에 의해 정의 됨)<br> 파이프라인 보기에서 이 단계에 "파이프라인 수정자"를 추가하여 서비스 요구 사항에 맞게 파이프라인의 콘텐츠를 조정할 수 있습니다.<br> 예).변수를 연결하고, 변수에 값을 할당하고, 파이프라인에서 변수를 삭제하거나 파이프라인에 변수를 추가할 수 있습니다. 이 단계에서 지정하는 수정 사항은 서비스가 런타임에 실행 되기 직전에 수행 |
+|2 | 서비스 실행 직후 예상되는 파이프라인 상태 <br> Service Out은 서비스가 출력으로 생성하는 변수 집합을 나타냅니다(해당 출력 매개 변수에 의해 정의)<br> Pipeline Out은 서비스 실행후 파이프라인에 있을 것으로 예상되는 변수 집합을 나타냅니다. 흐름의 다음 서비스에서 사용할 수 있는 변수 집합을 나타냅니다. 선택한 서비스(INVOKE Step)가 흐름 서비스의 마지막 단계인 경우 Pipeline Out은 흐름 서비스에 대한 출력 변수를 표시합니다(입력/ 출력 탭에서 선언됨)<br> 파이프라인 보기에서 이 단계에 "파이프라인 수정자"를 추가하여 파이프라인의 내용을 조정할 수 있습니다. 예를 들어 변수를 연결하고, 변수에 값을 할당하고, 파이프라인에서 변수를 삭제하거나 파이프라인에 변수를 추가할 수 있습니다. 이 단계에서 지정하는 수정 사항은 서비스가 런타임에 실행된 직후에 수행 |
+
 ### MAP 단계에 대한 파이프라인 보기
+MAP Step의 경우 파이프라인 보기는 파이프라인의 단일 단계를 표시합니다. 파이프라인 보기에는 두개의 변수 세트인 Pipeline In 및 Pipeline Out이 포함되어 있다. 이러한 변수 세트 사이에 파이프라인 보기에는 Transformers 라는 열이 포함되어있다.
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/mappingdatainflowservice_scr_02.gif)
+* Pipeline In 열은 MAP Step에 대한 입력을 나타내며. 여기에는 프름의 이 지점에서 파이프라인의 모든 변수 이름이 포함된다.
+* Transformers 열에는 값 변환을 완료하기 위해 MAP Step에 삽입된 모든 서비스가 표시됩니다. MAP Step에서 서비스 호출에 대한 자세한 정보는 [Transformers  작업을](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.map.transformer.html#wwID0E1EOQB "트랜스포머 작업") 참조
+* Pipeline Out 열은 MAP Step의 출력을 나타냅니다. 여기에는 MAP 단계가 완료될 때 파이프라인에서 사용할 수 있는 변수의 이름이 포함됨
+* MAP Step을 Flow에 처음  삽입할 때 Pipline In과 Pipline Out은 동일하나 MAP Stepd이 Flow Service의 유일한 단계이거나 Flow Service의 마지막 단계인 경우 Pipeline Out은 Flow Service에서 출력으로 선언된 변수도 표시합니다.
+
+## 기본 맵핑 작업방법
+기본 매핑 작업은 파이프라인 콘텐츠와 파이프라인의 변수 값을 관리하기 위해 수행하는 작업이빈다. 파이프라인 보기이에서 다음과 같은 기본 매핑을 수행할 수 있습니다.
+* **변수를 서로 연결합니다.** 한 서비스 또는 문서형식의 변수 값을 다른 서비스 또는 문서 형식의 변수에 복사할 수 있습니다.
+* **변수에 값을 할당합니다.** 변수 값을 하드 코딩하거나 변수에 기본값을 할당할 수 있습니다.
+* **파이프라인에서 변수를 삭제합니다.** 흐름의 후속 서비스에서 사용하지 않은 파이프라인 변수를 제거할 수 있습니다
+* **파이프라인에 변수를 추가합니다.** 흐름 서비스의 입력 또는 출력 매개변수로 선언되지 않은 변수를 추가할 수 있습니다. 흐름 서비스가 호출하는 서비스(내부 호출 서비스)에 대한 입력 및 출력 변수를 추가할 수도 있다.
+
+### 변수 연결 정보
+ 서비스 또는 문서형식의 변수 값을 다른 변수에 복사하여는 경우 변수를 연결합니다. Designer는 파이프라인 보기의 서비스 및 파이프라인 변수를 링크 라는 선으로 연결 변수 아이에 링크를 생성하려면 런타임에 한 변수에서 다른 변수로 값이 복사됩니다.
+ Flow 내에서 Designer는 이름이 동일하고 데이터 유형이 호환되는 변수를 암시적으로 연결합니다. 예) 다음 흐름의 서비스는 AcctNumber라는 변수를 사용합니다. 이름의 변수가 Pipeline In에 이미 있으므로 Service In의 Acctnumber변수에 자동으로 연결 됩니다. Designer는 암시적으로 연결된 변수를 회색 링크로 연결
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/Mapping_ImplicitLinks.png)
+Flow Service가 정보 조각에 동일한 이름을 사용하지 않는 경우 파이프라인 보기를 사용하여 변수를 서로 명시적으로 연결합니다. 명시적 연결은 흐름에 필요한 이름 및 구조 변환을 수행 하는 방법입니다. 디자이너는 명시적으로 연결된 변수를 검은 색 실선으로 연결합니다.
+파이프라인 보기의 입력 측에서 ?? 파이프라인의 변수를 서비스에 연결하는데 사용합니다.  예).  서비스는 파이프라인 변수 BuyersTotal과 동인한 OrderTotal이라는 값을 예상합니다(즉, 동일한 데이터에 대해 단순히 다른 이름) BuyersTotal 값을 OrderTotal값으로 사용하려면 ?를 사용하여 파이프라인 변수를 서비스에 "연결"합니다.
+
+런타임 서버는 서비스를 실행하기 전에 원본 변수(BuyersTotal)의 값을 대상 변수(OrderTotal)로 복사합니다.
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/Mapping_LinkingPipelineSvcInput.png)
+
+서비스가 생성하는 모든 출력 변수는 자동으로 파이프라인에 배치됩니다. Pipeline In 단계의 변수를 입력 변수에 연결할 수가 있는 것처럼 서비스의 출력을 Pipeline Out의 다른 변수에 연결할 수 있습니다.
+
+예). TransNumber라는 변수는 TransactionRecord라는 문서의 Num 필드에 연결 됩니다. 런타임 서버는 TransNumber의 값을 Num에 복사하고 TransNumber과 Num은 Flow의 다음 Service에서 사용가능
+
+![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/Mapping_LinkSrvOutputPipeline.png)
+
+* 변수 사이의 링크 생성
+  * 연결하려는 변수는 source 입니다 . 예를 들어 파이프라인 입력 의 변수를 서비스 입력 의 변수에 연결하면 파이프 라인 입력 변수가 소스입니다. Service Out 의 변수를 Pipeline Out 의 변수에 연결하면 Service Out 변수가 소스입니다.
+  * 연결하려는 변수는 target 입니다 . 예를 들어 파이프라인 입력 의 변수를 서비스 입력 의 변수에 연결하면 서비스 입력 변수가 대상이 됩니다. Service Out 의 변수를 Pipeline Out 의 변수에 연결하면 Pipeline Out 변수가 대상이 됩니다.
+  * Service In 변수는 배열 인덱싱을 사용하거나 변수에 대한 링크에 조건을 배치하는 경우에만 둘 이상의 링크의 대상이 될 수 있습니다.
+  * 변수를 서로 연결하여 소스 변수 에서 대상 변수로 데이터를 복사합니다. (단, 문서는 참조로 복사됩니다. 자세한 내용은 [What Happens When Integration Server Executes a Link? 를](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.map.link.executes.html#wwID0E25HQB "통합 서버가 링크를 실행하면 어떻게 됩니까?") 참조하십시오 .)
+  * 대상 변수는 하나의 소스 변수에만 연결할 수 있습니다. 대상 변수에 대한 링크를 그린 후에는 대상 변수에 대한 다른 링크를 그릴 수 없습니다. (이 규칙에 대한 두 가지 예외는 배열 변수 및 조건부 링크와 관련이 있습니다. 배열 변수 연결에 대한 자세한 내용은 [파이프라인에서 배열 변수 연결을](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.map.link.arrays.html#wwID0EBCJQB "파이프라인에서 배열 변수와 연결") 참조하십시오 . 변수 간 연결에 조건을 배치하는 방법에 대한 자세한 내용은 [조건부로 변수 연결을](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/esb.map.link.conditional.html#wwID0E5ZKQB "변수를 조건부로 연결하기") 참조하십시오 .
+  * 이미 변수에 값을 할당한 경우 변수에 대한 링크를 생성할 수 없습니다.
+  * 링크가 실행된 후 소스 및 대상 변수가 모두 파이프라인에 존재합니다. 대상 변수는 소스 변수를 대체하지 않습니다.
+  * 변수에 고정 null 또는 기본값이 할당된 경우 변수에 대한 링크를 생성할 수 없습니다. Designer는![](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/b2b-integration-compendium/images/fixed.gif) 변수 아이콘 옆에 있는 기호를 사용하여 변수에 다른 변수에 연결하여 재정의할 수 없는 고정 값이 있음을 나타냅니다.
+* 통합 서버가 링크를 실행하면 어떻게 됩니까?
+* 문서 및 문서 목록 변수에 연결
+* 다른 데이터 유형의 변수 연결
+* 파이프라인에서 배열 변수와 연결
+* 변수 사이의 링크 삭제
+* 변수를 조건부로 연결하기
 	
 https://techdocs.broadcom.com/kr/ko/ca-enterprise-software/it-operations-management/application-performance-management/10-5/345392263/345392665/345392690.html
