@@ -33,45 +33,31 @@ webMethods 의 flow language로 작성된 서비스로 이 서비스 를 사용�
 ---
 ### Invocation Steps()
 ---
-INVOKE - 지정된 서비스를 실행
+- INVOKE - 지정된 서비스를 실행
 
----
 
 ### Data-Handling Steps
----
-MAP - pipeline에서 지정된 편집 작업(예 : pipeline의 변수 매핑. pipeline에 변수 추가, pipeline에서 변수 삭제)을 수행 MAP 단계는 서비스 호출인 변환기를 포함할 수도 있다.
+- MAP - pipeline에서 지정된 편집 작업(예 : pipeline의 변수 매핑. pipeline에 변수 추가, pipeline에서 변수 삭제)을 수행 MAP 단계는 서비스 호출인 변환기를 포함할 수도 있다.
 
----
 ###  Control Steps
----
-BRANCH - pipeline에 지정된 변수 값에 따라 지정된 Flow step를 실행
+- BRANCH - pipeline에 지정된 변수 값에 따라 지정된 Flow step를 실행
 
----
-LOOP - 배열 형태의 데이터를 데이터의 갯수만큼 지정된  Flow step 반복하여 실행
+- LOOP - 배열 형태의 데이터를 데이터의 갯수만큼 지정된  Flow step 반복하여 실행
 
----
-REPEAT - successful 또는 non-successful 여부에 따라서 지정된 횟수까지 지정된 Flow step  set 을 반복하여 실행
+- REPEAT - successful 또는 non-successful 여부에 따라서 지정된 횟수까지 지정된 Flow step  set 을 반복하여 실행
 
----
-SEQUENCE - Flow step을 그룹화 합니다. SEQUENCE 단계는 기본적으로 
+- SEQUENCE - Flow step을 그룹화 합니다. SEQUENCE 단계는 기본적으로 
 
----
-BRANCH 단계의 하위를 제외한 Flow service의 모든 단계는 암시적 
+- BRANCH 단계의 하위를 제외한 Flow service의 모든 단계는 암시적 
 
----
--SEQUENCE 단계의 구성원인 것처럼 실행
+- SEQUENCE 단계의 구성원인 것처럼 실행
 
----
-EXIT - Flow step의 실행을 제어(예:  깊이 중첩된 일련의 단계 내에서 전제 흐름서비스 중단. Java 서비스 작성 없이 예외 발생 또는 예외 발생없이 LOOP 또는 REPEAT종료)
-
----
+- EXIT - Flow step의 실행을 제어(예:  깊이 중첩된 일련의 단계 내에서 전제 흐름서비스 중단. Java 서비스 작성 없이 예외 발생 또는 예외 발생없이 LOOP 또는 REPEAT종료)
 T RY - CATCH 또는 FINALLY 단계에서 실패 처리 나 또는 CATCH 또는 FINALLY 를 제공하려는 일련의 흐름 단계를 실행
 
----
-CATCH - TRY step에서 실패한 처리를  Stepdㄹ 실행
+- CATCH - TRY step에서 실패한 처리를  Stepdㄹ 실행
 
----
-FINALLY - Try 단계 또는 CATCH 단계가 실행된 후 일부 휴형절리를 수행하는 흐름 단계를 실행
+- FINALLY - Try 단계 또는 CATCH 단계가 실행된 후 일부 휴형절리를 수행하는 흐름 단계를 실행
 
 
 ---
