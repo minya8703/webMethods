@@ -46,7 +46,7 @@ webMethods 의 flow language로 작성된 서비스로 이 서비스 를 사용�
 
 - REPEAT - successful 또는 non-successful 여부에 따라서 지정된 횟수까지 지정된 Flow step  set 을 반복하여 실행
 
-- SEQUENCE - Flow step을 그룹화 합니다. SEQUENCE 단계는 기본적으로 
+- SEQUENCE - 일련의 흐름 단계를 시리즈로 그룹화합니다. SEQUENCE 단계는 대부분의 흐름 서비스에서 암시적입니다(즉, 흐름 서비스의 단계는 시리즈로 처리됨). 그러나 때때로 하나의 단위로 처리될 수 있도록 SEQUENCE를 사용하여 흐름 단계의 하위 집합을 명시적으로 그룹화해야 합니다.
 
 - BRANCH 단계의 하위를 제외한 Flow service의 모든 단계는 암시적 
 
