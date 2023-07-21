@@ -68,7 +68,16 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 ![image](https://github.com/minya8703/webMethods/assets/97384342/deecbf6f-f457-4158-99f2-ac632d62598f)
 
 ## 2. Logs
+### 2-1. Error
+### 2-2. Guaranteed Delivery
+### 2-3. Security
+### 2-4. Server
+### 2-5. Service
+### 2-6. Session
 ## 3. Packages
+### 3-1. Management
+### 3-2. Publishing
+### 3-3. Subscribing
 ## 4. Solutions
 ## 5. Adapters
 ## 6. webMethods Cloud
