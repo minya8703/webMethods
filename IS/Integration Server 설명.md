@@ -53,6 +53,7 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 #### ■ Filter Services
 ![image](https://github.com/minya8703/webMethods/assets/97384342/29b5db3f-0642-4d5b-bdb5-2c85f37b773b)
 - 필터를 사용하여 표시할 작업 목록을 관리하기 쉽게 만들수 있다.
+
 |Option|Description|
 |---|---|
 |Service Name| 검색하고자 하는 서비스 이름 "*"(별표) 및 "?" (물음표)만 지원, 서비스 이름은 대소문자를 구분|
