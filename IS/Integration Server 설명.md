@@ -1,3 +1,7 @@
+
+[[Integration Server Administrator's Guide]](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/index.html#page/b2b-integration-compendium%2F_b2b_integration_compendium.1.2334.html%23)
+
+
 # Integration Server
 ![image](https://github.com/minya8703/webMethods/assets/97384342/42a78218-76db-4ec7-b4df-40221723e124)
 IS 환경에서 관리자는 webMethods Integration Server의 설치, 구성 및 유지 관리를 담당
@@ -68,9 +72,29 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 ![image](https://github.com/minya8703/webMethods/assets/97384342/deecbf6f-f457-4158-99f2-ac632d62598f)
 
 ## 2. Logs
+- 각 영역별 발생한 로그를 표시
 ### 2-1. Error
+![image](https://github.com/minya8703/webMethods/assets/97384342/54be73e6-a552-4137-b733-067a17a8d65c)
+- 통합 서버 관리자에서어 오류 로그를 표시
+
+|Column|Details|
+|---|---|
+|Timestamp| 로그에 기록된 날짜 및 시간|
+|Service Name| 예외가 발생한 서비스의 이름|
+|Service Stack| 예외가 발생한 서비스에 대한 상위 서비스|
+|Error Message| 발생한 예외를 설명하는 메시지|
+|Stack Trace| 예외로 이어지는 호출 시퀀스를 표시하는 추적입니다. 스택 추적 데이터의 표시를 확장하려면 로그 표시 제어 영역에서 스택 추적 데이터 확장 확인란을 선택 하고 새로 고침을 클릭합니다 .|
+|Root Context <br> Parent Context <br> Current Context| 컨텍스트 정보 webMethods Monitor는 다른 로그의 관련 항목을 연결하는 데 사용|
+
 ### 2-2. Guaranteed Delivery
+![image](https://github.com/minya8703/webMethods/assets/97384342/da1e6d4e-e3d6-417d-96d8-cd30dceb0602)
+- 통합 서버 의 보장된 전달 기능을 사용하여 보장된 일회성 서비스 실행을 보장
+- 통합 서버 보장 전달 기능은 일시적인 오류에도 불구하고 다음이 발생하도록 보장
+  - 클라이언트의 서비스 실행 요청이 서버로 전달
+  - 서비스는 한 번만 실행되며 한 번만 실행
+  - 서비스 실행에 대한 응답을 클라이언트로 전달
 ### 2-3. Security
+
 ### 2-4. Server
 ### 2-5. Service
 ### 2-6. Session
