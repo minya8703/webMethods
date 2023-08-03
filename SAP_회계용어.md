@@ -12,12 +12,16 @@
 ![image](https://github.com/minya8703/webMethods/assets/97384342/4b9946e6-fbcd-472c-8e01-e78a8bb01a50)
 
 
-회계마스터
+## 회계마스터
 General Ledger Account (총계정원장)
 Customer Account(채권)
 Vendor Account(채무)
 Asset Account(고정자산)
 Bank Key(은행)
+
+GL Account
+
+
 
 ## Reconciliation Account (조정계정)
 - 회계가 GAAP (General Accepted Accounting Principle) 에 어긋나지 않도록 이루어 지는가를 결정하는 절차. G/L 계정 잔액이 전기 된 거래의 총합과 비교된다. 고객계정의 잔액과 구매처 계정잔액이 각각 채권잔액,채무잔액 및 전기된 거래와 비교된다.
