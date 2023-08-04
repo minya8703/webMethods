@@ -1,21 +1,28 @@
 # SAP FI 전표입력
 ## 채권
-![image](https://github.com/minya8703/webMethods/assets/97384342/c548375b-9eba-401c-b096-28bfe8a72ed8)
-![image](https://github.com/minya8703/webMethods/assets/97384342/d27adf33-624f-4e69-9392-68db24ea0f21)
+![고객 송장 입력_ 헤더 데이터 2023-08-04 오후 4_03_47](https://github.com/minya8703/webMethods/assets/97384342/3c14d018-084d-4bd8-b2bd-ead1e0d9fdae)
+![고객 송장 입력_ 헤더 데이터 2023-08-04 오후 4_05_00](https://github.com/minya8703/webMethods/assets/97384342/2ebea9b2-2c77-4286-9973-22e22a2f00c0)
 
-![image](https://github.com/minya8703/webMethods/assets/97384342/00a3a34f-fe42-48dd-a8b0-5d48376b694c)
-![image](https://github.com/minya8703/webMethods/assets/97384342/d0881bdf-48ea-4efd-9597-ba84ac8bd75a)
+![고객 송장 입력_ 헤더 데이터 2023-08-04 오후 4_06_49](https://github.com/minya8703/webMethods/assets/97384342/0d6fe8af-824f-4110-b682-1f23ef11723c)
+![채권_ 송장 입력_ 추가 고객항목 2023-08-04 오후 4_08_08](https://github.com/minya8703/webMethods/assets/97384342/65f2f4ac-9bcd-4f2f-8dfa-b22b6d5d0efa)
+![채권_ 송장 입력_ 추가 고객항목 2023-08-04 오후 4_10_38](https://github.com/minya8703/webMethods/assets/97384342/c7a4ca89-f9d3-4b33-9f5c-0a9a5e0f6bef)
+![채권_ 송장 입력_ 추가 G_L 계정항목 2023-08-04 오후 4_17_35](https://github.com/minya8703/webMethods/assets/97384342/deeab9cf-53d4-4c3e-bece-9736be77a938)
+![채권_ 송장 입력_ 수정 G_L 계정항목 2023-08-04 오후 4_19_01](https://github.com/minya8703/webMethods/assets/97384342/d7d7d4b7-247b-4fc0-995f-b7c5df36dd4d)
+![채권_ 송장 입력_ 조회 개요 2023-08-04 오후 4_19_24](https://github.com/minya8703/webMethods/assets/97384342/f9ed89a1-ed81-484c-89b1-e34c86c09b2c)
+![채권_ 송장 입력_ 조회 개요 2023-08-04 오후 4_20_06](https://github.com/minya8703/webMethods/assets/97384342/f01c583c-4c3c-47fe-84f1-e6b473a24034)
 
-![image](https://github.com/minya8703/webMethods/assets/97384342/cce08064-c9a9-4d91-8527-bb0f4e158a82)
-![image](https://github.com/minya8703/webMethods/assets/97384342/9830ea50-a6b3-4858-ac30-9576ba53e226)
-시뮬레이션후
-![image](https://github.com/minya8703/webMethods/assets/97384342/6c87c7aa-e032-4699-96b4-5cce09d1ecd8)
-전기
 
-![image](https://github.com/minya8703/webMethods/assets/97384342/f8938ddf-3ef6-4141-b0f4-e268d4350288)
-![image](https://github.com/minya8703/webMethods/assets/97384342/a901c6da-61a9-4076-8c12-c07793d408c2)
 
 
 ## 채무
-![image](https://github.com/minya8703/webMethods/assets/97384342/62f41ad0-bc83-441d-bc7f-0529fa091c02)
-![image](https://github.com/minya8703/webMethods/assets/97384342/d7b61012-943e-43d9-9bdd-d0d4462ba66c)
+![고객 개별 항목 표시 2023-08-04 오후 4_24_32](https://github.com/minya8703/webMethods/assets/97384342/29f835d5-4ca7-4fd9-a66f-06ebd026f7ef)
+
+![고객 개별 항목 표시 2023-08-04 오후 4_24_32](https://github.com/minya8703/webMethods/assets/97384342/25ed86c0-b81d-4cf1-9725-317f808a0f3c)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_30_38](https://github.com/minya8703/webMethods/assets/97384342/740593c5-7b91-4c77-8621-d909b1289e1d)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_31_03](https://github.com/minya8703/webMethods/assets/97384342/b6adea68-12ae-44d1-86a4-c0af57e3629e)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_31_17](https://github.com/minya8703/webMethods/assets/97384342/2b4b2514-0e2b-4d09-91c9-29ea5d6a0377)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_32_33](https://github.com/minya8703/webMethods/assets/97384342/50630911-1760-498e-aaec-17b0bf111c2e)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_33_05](https://github.com/minya8703/webMethods/assets/97384342/fdc9b923-054e-4a40-ac26-cf100604eb87)
+![구매처송장 입력_ 헤더 데이터 2023-08-04 오후 4_40_17](https://github.com/minya8703/webMethods/assets/97384342/bf16ca46-041a-4495-9fcd-7686cfc908e7)
+
+
