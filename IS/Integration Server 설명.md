@@ -87,19 +87,25 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 |Root Context <br> Parent Context <br> Current Context| 컨텍스트 정보 webMethods Monitor는 다른 로그의 관련 항목을 연결하는 데 사용|
 
 ### 2-2. Guaranteed Delivery
-![image](https://github.com/minya8703/webMethods/assets/97384342/da1e6d4e-e3d6-417d-96d8-cd30dceb0602)
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 9_11_02](https://github.com/minya8703/webMethods/assets/97384342/0e16f940-de24-4ad5-8b0a-9d24b60eb127)
 - 통합 서버 의 보장된 전달 기능을 사용하여 보장된 일회성 서비스 실행을 보장
 - 통합 서버 보장 전달 기능은 일시적인 오류에도 불구하고 다음이 발생하도록 보장
   - 클라이언트의 서비스 실행 요청이 서버로 전달
   - 서비스는 한 번만 실행되며 한 번만 실행
   - 서비스 실행에 대한 응답을 클라이언트로 전달
 ### 2-3. Security
-
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 9_11_02](https://github.com/minya8703/webMethods/assets/97384342/66cd3109-4c93-49f7-bda2-3b33d68759db)
 ### 2-4. Server
+![Editing webMethods_IS_Integration Server 설명 md at main · minya8703_webMethods - Chrome 2023-08-07 오전 9_16_59](https://github.com/minya8703/webMethods/assets/97384342/6f2ac7a8-6da8-418b-b489-a4a64754c0bc)
 ### 2-5. Service
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 9_19_39](https://github.com/minya8703/webMethods/assets/97384342/5cbec4ec-f5cf-4105-bf15-94c679887a56)
 ### 2-6. Session
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 9_26_49](https://github.com/minya8703/webMethods/assets/97384342/1f7575b5-a2dc-4b3d-a7c3-8f40e5334d9b)
+
+
 ## 3. Packages
 ### 3-1. Management
+Integration Server에서 구성된 패키지들을 관리
 ### 3-2. Publishing
 ### 3-3. Subscribing
 ## 4. Solutions
