@@ -3,10 +3,11 @@
 
 
 # Integration Server
-![image](https://github.com/minya8703/webMethods/assets/97384342/42a78218-76db-4ec7-b4df-40221723e124)
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 8_49_06](https://github.com/minya8703/webMethods/assets/97384342/fa6264d5-08b8-4ec0-aaa9-cebbdaeae80c)
 IS 환경에서 관리자는 webMethods Integration Server의 설치, 구성 및 유지 관리를 담당
 ## 1. Server
 ![image](https://github.com/minya8703/webMethods/assets/97384342/e087023e-e460-4cc6-a0e7-e1956a270a22)
+
 ### 1-1.Scheduler
 - 서버의 스케줄링 기능을 사용하여 지정한 시간에 서비스가 실행되도록 한다.
 
@@ -15,15 +16,14 @@ IS 환경에서 관리자는 webMethods Integration Server의 설치, 구성 및
   - 현재 실행중인 스케줄러 일시 정지 버튼
   - 링크를 누르면 아래와 같이 표시
 
-![image](https://github.com/minya8703/webMethods/assets/97384342/1d0c0e3d-9eef-4659-b698-a7b9fd59bb0c)
-
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 8_58_08](https://github.com/minya8703/webMethods/assets/97384342/4a485328-6a16-4025-ac36-17810c7e5082)
 #### ■ View System Tasks
 그림 추가 필요
   - 예약된 각 작업의 이름, 서버가 작업을 실행할 다음 날짜 및 시간, 서버가 적업을 실행하는 빈도등이 표시
   - Session, Listener log 등 같은 시스템 스케줄러
 
 #### ■ Create a Scheduled Task
-![192 168 110 205_5097_](https://github.com/minya8703/webMethods/assets/97384342/897e66c3-9733-4273-abfb-171c1af10dba)
+![192 168 110 205_5097_ (1)](https://github.com/minya8703/webMethods/assets/97384342/5e353c04-2ff9-4648-8edf-bc5e973ad2ed)
 
 |or this parameter|Specify|
 |---|---|
@@ -55,7 +55,7 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 
 
 #### ■ Filter Services
-![image](https://github.com/minya8703/webMethods/assets/97384342/29b5db3f-0642-4d5b-bdb5-2c85f37b773b)
+![192 168 110 205_5097_ (2)](https://github.com/minya8703/webMethods/assets/97384342/e2c6eaca-2618-48fc-9969-d6b8d3eaf5bb)
 - 필터를 사용하여 표시할 작업 목록을 관리하기 쉽게 만들수 있다.
 
 |Option|Description|
@@ -74,7 +74,7 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 ## 2. Logs
 - 각 영역별 발생한 로그를 표시
 ### 2-1. Error
-![image](https://github.com/minya8703/webMethods/assets/97384342/54be73e6-a552-4137-b733-067a17a8d65c)
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-07 오전 9_04_17](https://github.com/minya8703/webMethods/assets/97384342/d8b565e0-fd51-434a-8c31-0d8c9eaf0b4a)
 - 통합 서버 관리자에서어 오류 로그를 표시
 
 |Column|Details|
