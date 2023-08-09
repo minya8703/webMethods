@@ -104,31 +104,122 @@ Note: "if more than xxx minutes late"  이 필드가 허용할수 있는 최대 
 
 
 ## 3. Packages
-### 3-1. Management
-Integration Server에서 구성된 패키지들을 관리
-### 3-2. Publishing
-### 3-3. Subscribing
-## 4. Solutions
-### 4-1. VCS...
-### 4-2. Deployer...
-## 5. Adapters
-### 5-1. PKI...
-### 5-2. WmDB...
-### 5-3. JDBC Adapter...
-### 5-4. SAP Adapter...
-## 6. webMethods Cloud
-### 6-1. ACLs
-### 6-2. Certificates
-### 6-3. CSRF Guard
-### 6-4. Enterprise Gateway Rules
-### 6-5. Keystore
-### 6-6. OAuth
-### 6-7. Outbound Passwords
-### 6-8. Ports
-### 6-9. SAML
-### 6-10. User Management
-## 7. Security
+- 패키지를 사용하여 서비스 및 관련 파일을 그룹화
+![192 168 230 89_5097 - webMethods Integration Server - Chrome 2023-08-09 오전 9_11_40](https://github.com/minya8703/webMethods/assets/97384342/fa6054cf-8f03-4309-8c14-a7d5266ab99b)
 
+### 3-1. Management
+- Integration Server에서 구성된 패키지들을 관리
+### 3-2. Publishing
+- 서버별 사용유저 추가 삭제 관리
+### 3-3. Subscribing
+- 유저에게 사용 package 추가 삭제 관리
+- 사용할 유저가 구독 요청을 만들기 위해 게시자에 연결하는 데 사용하는 방법
+- 관리자가 사용유저에게 패키지를 보낼 때 연결하는 데 사용하는 방법
+## 4. Solutions
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-09 오전 10_43_48](https://github.com/minya8703/webMethods/assets/97384342/15c3e953-ead2-4d72-87cf-5107691103ff)
+### 4-1. VCS...
+- 버전 제어 관리를 위한 시스템
+![webMethods Deployer - Chrome 2023-08-09 오전 10_50_14](https://github.com/minya8703/webMethods/assets/97384342/87ac4e5a-ad38-4d7b-91b0-f19c5b6fd3ed)
+
+### 4-2. Deployer...
+- 다른 서버에 개발한 자산을 배포
+![webMethods Deployer - Chrome 2023-08-09 오전 10_49_04](https://github.com/minya8703/webMethods/assets/97384342/49c555c4-a998-43e9-be53-a851462acf36)
+
+## 5. Adapters
+![Editing webMethods_SAP_회계용어 md at main · minya8703_webMethods - Chrome 2023-08-09 오전 10_47_48](https://github.com/minya8703/webMethods/assets/97384342/987e134a-790f-4b93-9b47-73ee139ff2b4)
+
+### 5-1. PKI...
+- PKI (공개키기반구조) 관리
+![PKI - WEAI-DA02 - webMethods Integration Server - Chrome 2023-08-09 오전 11_04_48](https://github.com/minya8703/webMethods/assets/97384342/5c37d82d-7c83-47de-a9e3-5d1818900d06)
+
+### 5-2. WmDB...
+- WmDB 패키지를 사용하여 데이터베이스에 액세스
+- 데이터베이스에 연결하는 서비스를 구축하는 데 사용할 수 있는 서비스 및 DSP(Dynamic Server Pages)가 포함되어 있다.
+![WmDB - WEAI-DA02 - webMethods Integration Server - Chrome 2023-08-09 오전 11_05_45](https://github.com/minya8703/webMethods/assets/97384342/24631690-3fcd-4938-92d1-25d1763ef8a5)
+
+### 5-3. JDBC Adapter...
+[9-0_Adapter_for_JDBC_Install_and_Users_Guide.pdf] (https://documentation.softwareag.com/webmethods/adapters_estandards/Adapters/JDBC/JDBC_9-0/9-0_Adapter_for_JDBC_Install_and_Users_Guide.pdf, "JDBC Adapter Guide 참조")
+
+![9-0_Adapter_for_JDBC_Install_and_Users_Guide pdf - Chrome 2023-08-09 오후 12_36_42](https://github.com/minya8703/webMethods/assets/97384342/b9a3fc67-d2f8-4c0e-a55a-971a08406d6c)
+
+- JDBC 연결을 위한 어댑터를 구성할 때 다음과 같은 정보를 지정 Intergration Server는 JDBC 시스템에 연결하는 데 사용
+- 어댑터를 구성할 수 있으며, Intergration Server 관리자 화면을 사용하여 수동으로 JDBC 연결 또는프로그래밍 방식으로 pub.jdbcAdapter:createConnectionNodes 서비스를 사용 및 관리
+
+연결 방법은 따로 추가 예정.
+
+### 5-4. SAP Adapter...
+[webMethods SAP Adapter User’s Guide Version 6.5 SP1] : (https://documentation.softwareag.com/webmethods/adapters_estandards/Adapters/SAP/SAP_6-5/webMethods%20SAP%20Adapter%20Users%20Guide%206.5%20Service%20Pack%201.pdf)
+- SAP 시스템에 대한 연결을 설정 및 관리
+![Editing webMethods_IS_Integration Server 설명 md at main · minya8703_webMethods - Chrome 2023-08-09 오후 12_51_42](https://github.com/minya8703/webMethods/assets/97384342/9a3908c5-0765-4caf-997d-899c4608868f)
+
+연결 방법은 따로 추가 예정.
+
+## 6. webMethods Cloud
+### 6-1. Settings
+### 6-2. Accounts
+### 6-3. Applications
+
+
+## 7. Security
+### 6-1. ACLs
+- Integration Server에 있는 패키지, 폴더, 파일, 서비스 및 기타 요소에 대한 액세스를 제어
+### 7-2. Certificates
+
+### 7-3. CSRF Guard
+
+### 7-4. Enterprise Gateway Rules
+### 7-5. Keystore
+### 7-6. OAuth
+### 7-7. Outbound Passwords
+### 7-8. Ports
+### 7-9. SAML
+### 7-10. User Management
 ## 8. Settings
+![192 168 230 90_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 3_08_37](https://github.com/minya8703/webMethods/assets/97384342/694732e3-27e3-49d9-af46-8f60177303a3)
+### 8-1. Caching
+https://documentation.softwareag.com/webmethods/microservices_container/msc10-5/10-5_MSC_PIE_webhelp/index.html#page/pie-webhelp%2Fto-configuring_ehcache_on_integration_server.html%23
+- 캐시를 생성, 편집, 지우기, 비활성화, 활성화 및 삭제
+- Integration Server 및 Integration Server 에서 실행되는 Software AG 구성 요소는 Ehcache를 사용하여 많은 자체 내부 작업과 관련된 데이터를 캐시합니다. 또한 통합 서버는 일련의 공용 서비스를 제공합니다( pub.cacheWmPublic 패키지의 폴더) 개발자가 빌드하는 솔루션에 캐싱 기능을 추가하는 데 사용할 수 있다.
+- 캐싱은 자주 사용하는 데이터를 메모리에 유지하여 서비스의 성능을 향상시킬 수 있는 최적화 기능입니다. 캐싱은 트래픽이 많은 웹 서버 및 데이터베이스에서 정보를 검색하는 서비스의 응답 시간을 크게 향상시킬 수 있습니다.
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 3_49_19](https://github.com/minya8703/webMethods/assets/97384342/eb161974-246a-4889-8034-08d5a25c7719)
+
+### 8-2. Clustering
+- 서버 클러스터링을 사용하도록 설정한 경우 의 모든 서버 목록을 표시할 수 있으며, 클러스터. 서버는 정보를 검색하여 클러스터에 있는 다른 서버를 학습 할 수 있다.
+![192 168 110 205_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 4_27_24](https://github.com/minya8703/webMethods/assets/97384342/019331c0-a026-4db7-bc9e-e6c96b18dee8)
+
+### 8-3. Enhanced XML Parsing
+- 메모리 사용 제한과 사용 제한이 충족될 때 파티션이 로컬 디스크 저장소 또는 BigMemory 로 오버플로되는지 여부를 나타냅니다.
+![192 168 230 90_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 3_06_43](https://github.com/minya8703/webMethods/assets/97384342/c68444fc-7a2f-4048-a4d0-6c032b3c47da)
+
+### 8-4. Global Variables
+- Intergration Server를 사용하여 전역 변수를 정의할 수 있다.
+![192 168 230 90_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 3_00_20](https://github.com/minya8703/webMethods/assets/97384342/64e0b2bb-ea3b-4e8d-be11-ab0d96290557)
+
+### 8-5. JDBC Pools
+- 통합 서버를 외부 RDBMS의 데이터베이스 구성 요소에 연결합니다 .
+*JDBC 데이터베이스 연결 풀을 정의합니다 . 연결 풀은 통합 서버를 데이터베이스 구성 요소를 호스트하는 데이터베이스 서버에 연결하기 위한 매개변수를 지정합니다 . 런타임 시 통합 서버는 각 데이터베이스 구성 요소에 대해 별도의 연결 풀 인스턴스를 생성합니다.
+*데이터베이스 구성 요소에 대한 연결 풀에서 각 기능을 지정하여 데이터베이스 구성 요소에 쓰도록 기능을 지시합니다 . 예를 들어, ISCoreAudit 데이터베이스 구성 요소의 연결 풀에서 ISCoreAudit Log 함수를 가리키고, CrossReference 데이터베이스 구성 요소의 연결 풀에서 Xref 함수를 가리키는 식입니다. 통합 서버는 데이터베이스 구성요소에 쓸 수 있는 각 데이터 유형에 대해 사전 정의된 기능을 제공합니다.
+통합 서버 설치 중에 외부 데이터베이스를 사용하도록 선택하면 설치 프로그램에서 데이터베이스 연결 매개변수를 제공하도록 요청합니다. 통합 서버를 처음 시작하면 통합 서버는 제공된 매개변수에서 하나의 JDBC 연결 풀을 생성하고 해당 풀을 사용하여 데이터베이스 구성 요소에 쓰도록 미리 정의된 함수를 구성합니다 .
+
+![192 168 230 90_5097 - webMethods Integration Server - Chrome 2023-08-09 오후 4_37_14](https://github.com/minya8703/webMethods/assets/97384342/b7f30b59-6784-4981-a2a2-601b1dda0043)
+
+
+### 8-6. Licensing
+- 라이센스 정보를 보거나 통합 서버 의 라이센스 키를 변경 가능
+### 8-7. Logging
+- 플랫폼에 대한 로깅은 플랫폼 활동을 모니터링하고 문제를 수정하는 데 필요한 중요한 데이터를 제공
+- Universal Messaging 클라이언트 로그 파일은 umClient.log라고 합니다. 범용 메시징 클라이언트 로그 파일 의 세부 정보 양을 제어하도록 UM 클라이언트 로거를 구성할 수 있습니다 .
+### 8-8. Messaging
+
+https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/index.html#page/b2b-integration-compendium%2Fconfigure_wm_msg_connection_alias_4.html
+### 8-9. Metadata
+### 8-10. Proxy Servers
+### 8-11. Quiesce
+### 8-12. Remote Servers
+### 8-13. Resources
+### 8-14. SFTP
+### 8-15. URL Aliases
+### 8-16. Web Services
+### 8-17. Extended
 
 ## 9. Commons
