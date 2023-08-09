@@ -1,6 +1,5 @@
 
-![SAP Easy Access 2023-08-03 오후 1_10_37](https://github.com/minya8703/webMethods/assets/97384342/21ecd8ae-259a-4f44-b8fa-2e8ecf80e971)
-https://tokulog.org/blog/fi-ar/
+[FI 설명 참고 일본 사이트](https://tokulog.org/blog/fi-ar/, "FI 설명 참고 사이트").
 
 - GL : General Ledger (총계정원장 : 기업 회계상의 모든 계정과목들을, 한군데에 빠짐없이 수록한 장부 또는 간단히 원장이라고도 하며 대차대조표와 손익계산서는 총계정원장을 근거로 하여 만들어짐)
 - AR : Account Receivable(매출채권 : 기업이 상품을 매출하는 과정에서 발생한 채권으로, 외상매출금과 받을어음을 말하는 것)
