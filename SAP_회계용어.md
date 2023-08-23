@@ -142,6 +142,11 @@ https://mirukognosis.com/?p=1181
 https://sap-consul-dojo.com/fi-7-1-automatic-payment/#toc5
 - 결제, 입금을 관리하는 마스터로 은행계좌정보와 G/L계정코드를 관리한다.
 - 은행계좌정보에 G/L계정을 입력하면, 은행 계좌와 G/L계정이 연결된다.
+![image](https://github.com/minya8703/webMethods/assets/97384342/7667bc7c-f1c0-45ea-ac90-f4b16ff775b1)
+House bank : 회사가 거래하는 은행
+Acct ID : 회사의 거래 계좌
+위의 Bank Account와 Bank GL Account가 결정된다.(보통예금 10000 당좌예금 20000 으로 정의)
+
 
 https://www.sappane.com/kdict/modules/06/36
 ![image](https://www.sappane.com/_detail/kdict/modules/06/saperp_all_dataflow.jpg?id=kdict%3Amodules%3A06%3A36)
