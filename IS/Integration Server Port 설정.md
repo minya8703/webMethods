@@ -1,7 +1,7 @@
 
-https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/index.html#page/b2b-integration-compendium%2Fto-configure_ports_6.html%23wwconnect_header
-https://documentation.softwareag.com/webmethods/wmsuites/wmsuite10-4_j/Integration_Server/10-4_Integration_Server_Administrators_Guide_J.pdf
-9. Port의 설정 참고
+[영문판 Document](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/index.html#page/b2b-integration-compendium%2Fto-configure_ports_6.html%23wwconnect_header) <br>
+[일어판 Document](https://documentation.softwareag.com/webmethods/wmsuites/wmsuite10-4_j/Integration_Server/10-4_Integration_Server_Administrators_Guide_J.pdf)
+<br> 9. Port의 설정 참고
 # Port에 대해
 - Integration Server는 지정 Port에서 요청을 수신 대기 하며 각 Port는 HTTP, HTTPS, FTP,FTPS,WebSocket,전자메일,파일폴링 등 특정 프로토콜 타입과 관련이 있습니다.
 ## 사용가능한 Port타입
@@ -55,17 +55,36 @@ https://documentation.softwareag.com/webmethods/wmsuites/wmsuite10-4_j/Integrati
 |Port|사용할 Port번호를 지정 사용하지 않는 번호로 선택한다.|
 |Alias|Integration Server에 대해 고유한 Port의 명칭을 지정|
 |Description|Port에 대한설명|
-|Package Name|이 Port와 연결된 패키지로서 패키지를 유효로 하면, Port도 유효가 되며 패키지를 무효로 하면 이 Port는 무효가 된다.
-<br> 이 패키지를 복제하면 Integration Server가 같은 번호, 같은 설정의 포트가 타켓서버에 작성됩니다. 같은 번호의 포트가 존재할 경우 포트의 설정은 해당 설정은 그대로 유지
-<br> 이 기능은 특정 포트에서 입력필요한 어플리케이션을 작성하는 경우 편리합니다. 애플리케이션은 다른 서버에 복제된 후에도 계속 작동|
+|Package Name|이 Port와 연결된 패키지로서 패키지를 유효로 하면, Port도 유효가 되며 패키지를 무효로 하면 이 Port는 무효가 된다.<br> 이 패키지를 복제하면 Integration Server가 같은 번호, 같은 설정의 포트가 타켓서버에 작성됩니다. 같은 번호의 포트가 존재할 경우 포트의 설정은 해당 설정은 그대로 유지<br> 이 기능은 특정 포트에서 입력필요한 어플리케이션을 작성하는 경우 편리합니다. 애플리케이션은 다른 서버에 복제된 후에도 계속 작동|
 |Bind Address (optional)|이 포트의 바인딩할 IP주소입니다. Bind Address는 사용할 컴퓨터에 복수의 IP주소가 설정되어있고, 포트에서 지정한 주소로 사용할 경우 사용합니다. Bind Address를 지정하지 않을 경우 자동으로 지정됩니다.|
-|Backlog|Integration Server에서 요청거부가 되기전에 유효한  |
-|Keep Alive Timeout||
-|Threadpool||
+|Backlog|Integration Server에서 요청거부가 되기전에 유효한 포트의 큐(대기열)에 남아 있은 요청의 수 입니다. 기본값은 200입니다. 최대값은 65535입니다.|
+|Keep Alive Timeout|서버가 이 제한 기간 값(밀리초)내에 클라이언트로부터 요청을 받지 못한 경우 연결을 닫을 시기입니다.|
+|Threadpool|리스터가 요청 발송에만 이 풀을 사용할지 여부입니다. 기존 통합 서버 스레드 풀은 전역 스레드 풀입니다. 이 리소스에 로드가 매우 높은 경우 전역 스레드 풀이 요청을 처리할 때까지 기다려야 할 수 있으나 개인 스레드 풀 옵션이 활성화 되면 이 포트로 들어오는 요청은 스레드에 대해 다른 서버 기능과 경쟁할 필요가 없게 됩니다. 이 포트로 들어오는 요청에 대해 개인 스레드 풀을 설정하려면 활성화를 클릭합니다. <br> ・Threadpool 최소값 : 개인용 스레드 풀에 대한 최소 스레드 수를 나타냅니다. 기본 값은 1입니다. <br> ・Threadpool 최대값 : 이 개인 스레드 풀의 최대 스레드 수를 나탭니다. 기본값은 5입니다.<br>・Threadpool 우선순위 : Java 스레드 우선순위를 나타냅니다. 기본값은 5입니다.<br> ``` 중요: 이 설정은 서버 성능과 처리량에 영향을 미치므로 각별히 주의하여 사용하십시오. 스레드풀 기능을 사용할 필요가 없으면 비활성화 를 클릭합니다. 포트의 세부 정보를 볼 때 서버는 현재 포트에 사용 중인 개인 스레드 풀 스레드의 총 수를 보고합니다. ``` Threadpool 기능을 사용하지 않는 경우, [enable]을 클릭|
 
 
+  5.  [Security Configuration] 이하의 정보를 입력
 
+|For this parameter...|Specify...|
+|---|---|
+|Client Authentication|통합 서버가 이 HTTP 포트에 도착하는 요청에 대해 수행할 클라이언트 인증 유형|
 
+  |Option|Description|
+  |---|---|
+  |Kerberos Properties (Optional)|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Digest|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Request Kerberos Ticket|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Require Kerberos Ticket|HTTP 리스너를 활성화할지 안할지를 지정|
+  
+|For this parameter...|Specify...|
+|---|---|
+|Kerberos Properties (Optional)|통합 서버가 이 HTTP 포트에 도착하는 요청에 대해 수행할 클라이언트 인증 유형|
+
+  |Option|Description|
+  |---|---|
+  |Kerberos Properties (Optional)|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Digest|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Request Kerberos Ticket|HTTP 리스너를 활성화할지 안할지를 지정|
+  |Require Kerberos Ticket|HTTP 리스너를 활성화할지 안할지를 지정|
 
 
 webmethods git연동
