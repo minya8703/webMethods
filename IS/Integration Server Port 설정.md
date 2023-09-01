@@ -1,4 +1,3 @@
-![image](https://github.com/minya8703/webMethods/assets/97384342/41a12763-b807-4195-a9bf-58798639cdaa)
 [영문판 Document](https://documentation.softwareag.com/webmethods/compendiums/v10-3/C_B2B_Integration/index.html#page/b2b-integration-compendium%2Fto-configure_ports_6.html%23wwconnect_header) <br>
 [일어판 Document](https://documentation.softwareag.com/webmethods/wmsuites/wmsuite10-4_j/Integration_Server/10-4_Integration_Server_Administrators_Guide_J.pdf)
 <br> 9. Port의 설정 참고
@@ -164,6 +163,9 @@
   - 기본적으로 FTPS 포트는 보안 클라이언트에서만 작동합니다. 보안 클라이언트는 AUTH 명령을 실행하여 연결을 보호하는 클라이언트입니다. 또한 안전하지 않은 클라이언트와 작동하도록 FTPS 수신기를 구성할 수도 있습니다.
   - 자체 인증서를 사용하거나 통합 서버 인증서를 사용하거나 클라이언트 인증서를 요청하거나 요구하도록 FTPS 포트를 구성할 수 있습니다. 또한 키 저장소(파일 또는 SmartCard/HSM 기반)에 있는 개인 키와 인증서 체인을 사용하도록 리스너를 구성할 수 있습니다.
   - 기본적으로 통합 서버는 FTPS 포트에 대한 인증서 매핑을 수행하지 않습니다. 이 기능을 사용하려면 watt.net.ftpUseCertMap 구성 속성을 true로 설정해야 합니다.
+  - 사용자가 FTPS 포트를 통해 로그인하면 통합 서버는 사용자를 기본 FTP 루트 디렉터리나 클라이언트 사용자 디렉터리에 배치할 수 있습니다. 통합 서버는 watt.server.login.userFtpDir 매개변수의 설정을 기반으로 디렉토리를 선택합니다. 
+
+ 
 
 
 webmethods git연동
