@@ -10,7 +10,7 @@ Include 문 생성
 
 REPORT  ZF***** MESSAGE-ID ICC-KR.
 
-INCLUDE ZF*****TOP.  -- 글로벌 데이터를 생성
+INCLUDE ZF*****TOP.  -- 화면 출력 및 데이터 처리를 위한 선언ｄ
 INCLUDE ZF*****TOP_ALV. -- 
 INCLUDE ZF*****F01. -- SUBROUTINE 사용시(PERFORM문)
 INCLUDE ZF*****O01.
