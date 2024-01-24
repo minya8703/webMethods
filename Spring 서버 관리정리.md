@@ -26,4 +26,5 @@ https://everenew.tistory.com/257
 # 사용중 포트 확인용
 ``` netstat -ano | find "LISTENING" | find "포트번호" ```
 ``` taskkill /F /PID 포트번호 ```
-https://blog.naver.com/bb_/222325645171
+- https://blog.naver.com/bb_/222325645171
+- https://devscb.tistory.com/188
